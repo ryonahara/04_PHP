@@ -1,14 +1,3 @@
-<?php
-//商品リスト
-$goodsList = [
-    'テレビ',
-    'パソコン',
-    '携帯電話',
-    '冷蔵庫',
-    '洗濯機'
-];
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,11 +9,11 @@ $goodsList = [
 <body>
 <h2>商品の選択</h2>
 <ul></ul>
-    <li><a href="goods.php?id=0&itemName=テレビ"><?=$goodsList[0]?></a></li>
-    <li><a href="goods.php?id=1&itemName=パソコン"><?=$goodsList[1]?></a></li>
-    <li><a href="goods.php?id=2&itemName=携帯電話"><?=$goodsList[2]?></a></li>
-    <li><a href="goods.php?id=3&itemName=冷蔵庫"><?=$goodsList[3]?></a></li>
-    <li><a href="goods.php?id=4&itemName=洗濯機"><?=$goodsList[4]?></a></li>
+    <li><a href="goods.php?id=0">テレビ</a></li>
+    <li><a href="goods.php?id=1">パソコン</a></li>
+    <li><a href="goods.php?id=2">携帯電話</a></li>
+    <li><a href="goods.php?id=3">冷蔵庫</a></li>
+    <li><a href="goods.php?id=4">洗濯機</a></li>
 </ul>
 </body>
 </html>
