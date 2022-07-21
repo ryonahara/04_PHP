@@ -3,13 +3,13 @@ $alph = 'A-B-C';
 /* A | B | C | D | 4個 */
 
 //配列に変換
-$alpfArr = explode('-', $alph);
+$alphArr = explode('-', $alph);
 
 //Dを追加
-array_push($alpfArr, 'D');
+array_push($alphArr, 'D');
 
 //個数を追加
-array_push($alpfArr, count($alpfArr));
+array_push($alphArr, count($alphArr));
 
 //文字列に変換
-echo implode(' | ', $alpfArr) . '個';
+echo implode(' | ', $alphArr) . '個';
