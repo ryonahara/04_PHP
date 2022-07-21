@@ -1,8 +1,7 @@
 <?php
 $domain = 'http://example.com?';
+$text = 'PHP　MySQL　Laravel';
 
-$textURL = $domain . http_build_query(explode('　', 'PHP　MySQL　Laravel'));
-
-echo ($textURL);
+echo ($domain . http_build_query(explode('　', $text)));
 
 /* http://example.com?0=PHP&1=MySQL&2=Laravel */
