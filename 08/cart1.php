@@ -43,7 +43,7 @@ $totalPrice = $goods['price'] * $count;
             <tr>
                 <td><?= $goods['name'] ?></td>
                 <td><?= $goods['price'] ?>円</td>
-                <td><input type="text" name="count" value="<?= $count ?>"></td>
+                <td><input type="text" name="count" value="<?= htmlspecialchars($count, ENT_QUOTES, 'UTF-8') ?>"></td>
                 <td><?= $totalPrice ?>円</td>
             </tr>
         </table>
