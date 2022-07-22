@@ -2,11 +2,11 @@
 //商品と値段
 $goods1 = [
     'name' => '和風柄レターセット',
-    'price' => 980
+    'price'  => 980
 ];
 $goods2 = [
     'name' => '毛筆ペン(細字)',
-    'price' => 240
+    'price'  => 240
 ];
 //数量
 $count1 = $_POST['count1'];
