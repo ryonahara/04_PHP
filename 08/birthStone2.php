@@ -15,7 +15,9 @@ $birthStones = [
     'ターコイズ'
 ];
 $month = $_POST['month'];
+$stoneName = $birthStones[$month - 1];
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -28,7 +30,7 @@ $month = $_POST['month'];
 <body>
     <form action="" method="post">
         <h1>誕生石</h1>
-        <p><?= $month ?>月の誕生石は<?= $birthStones[$month-1] ?>です！</p>
+        <p><?= $month ?>月の誕生石は<?= $stoneName ?>です！</p>
         <p>誕生月を選んでください:
             <select name="month" id="1" value="<?= $month ?>">
                 <option value="1">1月</option>
