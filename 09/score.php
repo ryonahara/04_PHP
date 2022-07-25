@@ -34,7 +34,7 @@ if (!empty($_POST)) {
     <h1>テスト結果判定</h1>
     <form action="" method="post">
         <p>点数:
-            <input type="text" name="score" size="3" value="<?= htmlspecialchars($score, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="text" name="score" size="3" maxlength="3" value="<?= htmlspecialchars($score, ENT_QUOTES, 'UTF-8'); ?>">点
             <input type="submit" value="判定"></p>
     </form>
     <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
