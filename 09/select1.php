@@ -14,9 +14,9 @@ if (!empty($_POST)) {
     <form action="" method="post">
         <p>
             <select name="item">
-                <option>リンゴ</option>
-                <option selected>バナナ</option>
-                <option>ぶどう</option>
+                <option <?php if($item == 'リンゴ') echo 'selected'; ?>>リンゴ</option>
+                <option <?php if($item == 'バナナ') echo 'selected'; ?>>バナナ</option>
+                <option <?php if($item == 'ぶどう') echo 'selected'; ?>>ぶどう</option>
             </select>
         </p>
         <p><input type="submit" value="送信"></p>
