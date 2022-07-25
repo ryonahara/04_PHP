@@ -5,4 +5,4 @@ $total = 0;
 for ($i = 0; $i < count($priceList); $i++) {
     $total += $priceList[$i];
 }
-echo $total *1.1 . '円';
+echo $total * 1.1 . '円';
