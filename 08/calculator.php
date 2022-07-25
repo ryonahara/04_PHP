@@ -1,6 +1,13 @@
 <?php
-$num1 = $_POST['num1'];
-$num2 = $_POST['num2'];
+// $num1 = $_POST['num1'];
+// $num2 = $_POST['num2'];
+
+$num1 = '';
+$num2 = '';
+if (!empty($_POST)) {
+    $num1 = $_POST['num1'];
+    $num2 = $_POST['num2'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +21,9 @@ $num2 = $_POST['num2'];
 
 <body>
     <h1>計算</h1>
-    <h2><?= $num1 ?> + <?= $num2 ?> = <?= $num1 + $num2 ?></h2>
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+        <h2><?= $num1 ?> + <?= $num2 ?> = <?= $num1 + $num2 ?></h2>
+    <?php endif; ?>
     <form action="" method="post">
     <p><input type="text" name="num1" size="2" maxlength="2" value="<?=$num1?>"> +
             <input type="text" name="num2" size="2" maxlength="2" value="<?=$num2?>"> =
