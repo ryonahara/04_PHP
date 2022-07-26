@@ -16,7 +16,7 @@ if (!empty($_POST)) {
     $num = $_POST['num'];
     if (!is_numeric($num)) {
         $result =  '数値を入力してください';
-    } elseif (!(1 <= $num && $num <= 99)) {
+    } elseif (1 > $num || $num > 99) {
         $result =  '1から99までの数値を入力してください';
     } else {
         for ($i = 0; $i < count($numArr[$arr]); $i++) {
