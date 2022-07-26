@@ -10,8 +10,6 @@ function getPriceInTax($prices, $tax = 8)
     foreach ($prices as $arr){
         $total += $arr;
     }
-    //税込価格
-    $priceInTax = $total * (1 + $tax / 100);
-
-    return floor($priceInTax);
+    //税込価格を戻り値として返す
+    return floor($total * (1 + $tax / 100));
 }
