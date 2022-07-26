@@ -8,16 +8,16 @@ $numArr = [
 ];
 $num = '';
 $arr = '';
-$result = '';
 $total = 0;
 
 if (!empty($_POST)) {
     $arr = $_POST['arr'];
     $num = $_POST['num'];
+    $arrPlus = $arr + 1;
     if (!is_numeric($num)) {
-        $result =  '数値を入力してください';
+        $error =  '数値を入力してください';
     } elseif (1 > $num || $num > 99) {
-        $result =  '1から99までの数値を入力してください';
+        $error =  '1から99までの数値を入力してください';
     } else {
         for ($i = 0; $i < count($numArr[$arr]); $i++) {
             $total += $numArr[$arr][$i];
@@ -80,13 +80,11 @@ if (!empty($_POST)) {
         <p><input type="submit" value="計算"></p>
     </form>
     <?php if (isset($error)) : ?>
-        <p class="error">
-            <p>ERROR</p>
-        </p>
+        <p class="error"><?= $error ?></p>
     <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
         <table>
             <tr>
-                <th>配列<?= $arrPlus = $arr + 1 ?></th>
+                <th>配列<?= $arrPlus ?></th>
                 <?php for ($i = 0; $i < count($numArr[$arr]); $i++) : ?>
                     <td><?= $numArr[$arr][$i] ?></td>
                 <?php endfor ?>
