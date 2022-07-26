@@ -23,8 +23,6 @@ function getScoreResult($score)
     return $result;
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
