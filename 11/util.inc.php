@@ -1,10 +1,14 @@
 <?php
 
-function getWareki($seireki)
+/**
+ * 西暦を和暦に変換する
+ *
+ * @param integer $seireki
+ * @return string
+ */
+function getWareki(int $seireki):string
 {
     //ローカル変数定義
-    $year = 0;
-    $wareki = '';
 
     if (!is_numeric($seireki) || $seireki < 1868) {
         $wareki = '未対応';
@@ -54,4 +58,3 @@ function h(?string $string): string
 {
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
-
