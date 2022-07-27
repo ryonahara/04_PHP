@@ -3,13 +3,11 @@
 /**
  * 西暦を和暦に変換する
  *
- * @param integer $seireki
+ * @param integer|null $seireki
  * @return string
  */
-function getWareki(int $seireki):string
+function getWareki(?int $seireki): string
 {
-    //ローカル変数定義
-
     if (!is_numeric($seireki) || $seireki < 1868) {
         $wareki = '未対応';
     } elseif ($seireki < 1912) {
