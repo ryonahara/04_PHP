@@ -3,7 +3,14 @@ $score = '';
 if (!empty($_POST)) {
     $score = $_POST['score'];
 }
-function getScoreResult($score)
+
+/**
+ * スコアを引数に指定すると判定結果を返す
+ *
+ * @param integer|null $score
+ * @return string
+ */
+function getScoreResult(?int $score):string
 {
     if (!is_numeric($score)) {
         $result =  '数値を入力してください';

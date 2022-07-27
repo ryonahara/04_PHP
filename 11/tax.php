@@ -4,9 +4,20 @@ $prices = [298, 129, 198, 274, 625, 273, 296, 325, 200, 127, 398];
 
 echo number_format(getPriceInTax($prices, 10)) . '円';
 
-function getPriceInTax($prices, $tax = 8)
+/**
+ * 購入商品価格の配列を指定すると
+ * 10%の税込み価格を返す
+ *
+ * @param array|null $prices
+ * @param integer|null $tax
+ * @return integer|null
+ */
+function getPriceInTax(?array $prices, ?int $tax = 8):?int
 {
     $total = 0;
+    if (empty($prices)) {
+        return null;
+    }
     foreach ($prices as $arr){
         $total += $arr;
     }
