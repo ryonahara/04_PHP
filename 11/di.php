@@ -10,9 +10,9 @@ $h = 70;   // 湿度 H
  * @param integer|null $h
  * @return array
  */
-function getDi(?int $t , ?int $h): array
+function getDi(?int $t , ?int $h ): array
 {
-    if (empty($t) || empty($t)) {
+    if (empty($t) || empty($h)) {
         return null;
     }
     //不快指数の計算
