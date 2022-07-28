@@ -16,6 +16,9 @@ $w2 = $weekday[$d2->format('w')];
 $interval = $d1->diff($d2);
 $days = $interval->days;
 
+//和製の日付に変換
+$jpd1 = getJpDate($d1->format('Y年m月d日'), $w1);
+$jpd2 = getJpDate($d2->format('Y年m月d日'), $w2);
 
 //結果を出力
 $invert = $interval->invert;
@@ -23,8 +26,14 @@ if ($days == 0) {
     echo '日付は同じです';
 } else {
     if ($invert == 1) {
-        echo $d1->format('Y年m月d日') . '(' . $w1 .')曜日' . 'の方が「' . $days . '日分」' . $d2->format('Y年m月d日') . '(' . $w2 .')曜日' . 'より新しいです';
+        echo $jpd1 . 'の方が「' . $days . '日分」' . $jpd2 . 'より新しいです';
     } else {
-        echo $d2->format('Y年m月d日') . '(' . $w2 .')曜日' . 'の方が「' . $days . '日分」' . $d1->format('Y年m月d日') . '(' . $w1 .')曜日' . 'より新しいです';
+        echo $jpd2 . 'の方が「' . $days . '日分」' . $jpd1 . 'より新しいです';
     }
+}
+
+function getJpDate(?string $d, ?string $w): string
+{
+    $jpDate = $d . '(' . $w . ')';
+    return $jpDate;
 }
