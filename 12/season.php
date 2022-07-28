@@ -5,18 +5,19 @@ require_once dirname(__FILE__) . '/Chart.php';
 
 $spring = '';
 $summer = '';
-$fall = '';
+$fall   = '';
 $winter = '';
+
 if (!empty($_POST)) {
     $spring = $_POST['spring'];
     $summer = $_POST['summer'];
-    $fall = $_POST['fall'];
+    $fall   = $_POST['fall'];
     $winter = $_POST['winter'];
 }
 
-$data = [$spring, $summer, $fall, $winter];
+$data  = [$spring, $summer, $fall, $winter];
 $label = ['春', '夏', '秋', '冬'];
-$c = new Chart();
+$c     = new Chart();
 $c->setTitle('好きな季節 アンケート結果');
 $c->addData($data, 'population');
 $c->setXLabel($label);
