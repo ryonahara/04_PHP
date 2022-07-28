@@ -32,6 +32,13 @@ if ($days == 0) {
     }
 }
 
+/**
+ * 和製の日付の文字列を返す
+ *
+ * @param string|null $d
+ * @param string|null $w
+ * @return string
+ */
 function getJpDate(?string $d, ?string $w): string
 {
     $jpDate = $d . '(' . $w . ')';
