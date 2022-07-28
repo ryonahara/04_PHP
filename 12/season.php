@@ -19,14 +19,11 @@ $data  = [$spring, $summer, $fall, $winter];
 $label = ['春', '夏', '秋', '冬'];
 $c     = new Chart();
 $c->setTitle('好きな季節 アンケート結果');
-$c->addData($data, 'population');
+$c->addData($data, 'season');
 $c->setXLabel($label);
 $c->setXAxisName('（季節）');
 $c->setYAxisName('（人）');
 $c->setSize(300, 200);
-
-
-
 
 /**
  * XSS対策の参照名省略
@@ -56,31 +53,31 @@ function h(?string $string): string
         <table>
             <tr>
                 <td>春</td>
-                <th><input type="text" name="spring" size="4" value="<?= h($spring); ?>"></th>
+                <th><input type="text" name="spring" size="4" value="<?= h($spring) ?>"></th>
                 <td>人</td>
             </tr>
             <tr>
                 <td>夏</td>
-                <th><input type="text" name="summer" size="4" value="<?= h($summer); ?>"></th>
+                <th><input type="text" name="summer" size="4" value="<?= h($summer) ?>"></th>
                 <td>人</td>
             </tr>
             <tr>
                 <td>秋</td>
-                <th><input type="text" name="fall" size="4" value="<?= h($fall); ?>"></th>
+                <th><input type="text" name="fall" size="4" value="<?= h($fall) ?>"></th>
                 <td>人</td>
             </tr>
             <tr>
                 <td>冬</td>
-                <th><input type="text" name="winter" size="4" value="<?= h($winter); ?>"></th>
+                <th><input type="text" name="winter" size="4" value="<?= h($winter) ?>"></th>
                 <td>人</td>
             </tr>
         </table>
         <p><input type="submit" value="グラフ生成"></p>
+        </form>
+    <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
+        <?php $c->printBarChart(); ?>
+    <?php endif; ?>
 
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-            <?php $c->printLineChart(); ?>
-        <?php endif; ?>
-    </form>
 </body>
 
 </html>
