@@ -79,7 +79,7 @@ if ($lang === 'en') {
     <form action="" method="post" novalidate>
         <p>
             <select name="lang" value="<?= $lang ?>">
-            <?php for ($i = 0; $i < count($totalLang) - 1; $i++): ?>
+            <?php for ($i = 0; $i < count($totalLang); $i++): ?>
                 <option value="<?= $totalLang[$i]['nation']?>" <?= $lang == $totalLang[$i]['nation'] ? 'selected' : ''; ?>><?=$totalLang[$i]['language']?></option>
             <?php endfor; ?>
             </select>
