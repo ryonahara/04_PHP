@@ -1,17 +1,14 @@
 <?php
-$lang = '';
+$lang = 'ja';
 if (!empty($_POST)) {
     $lang = $_POST['lang'];
-} else {
-    if (isset($_COOKIE['lang'])) {
-        //リピーター
-        $lang = $_COOKIE['lang'];
-    }
+} elseif (isset($_COOKIE['lang'])) {
+    //リピーター
+    $lang = $_COOKIE['lang'];
 }
 
+setcookie('lang', $lang, time() + 86400 * 30);
 
-//メッセージを初期化
-$message = 'ようこそ！';
 if ($lang === 'en') {
     $message = 'Welocome！';
 } elseif ($lang === 'ja') {
@@ -23,7 +20,6 @@ if ($lang === 'en') {
 } elseif ($lang === 'it') {
     $message = 'Benvenuto!';
 }
-setcookie('lang', $lang, time() + 86400 * 30);
 
 ?>
 
