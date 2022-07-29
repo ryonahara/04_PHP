@@ -1,5 +1,5 @@
 <?php
-$lang = 'ja';
+
 
 $totalLang = [
     [
@@ -9,7 +9,7 @@ $totalLang = [
     ],
     [
         'language' => '日本語',
-        'nation'   => 'jp',
+        'nation'   => 'ja',
         'greeting' => 'ようこそ！'
     ],
     [
@@ -39,7 +39,7 @@ $totalLang = [
     ]
 
 ];
-
+$lang = 'ja';
 
 if (!empty($_POST)) {
     $lang = $_POST['lang'];
