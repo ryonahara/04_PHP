@@ -1,7 +1,7 @@
 <?php
 
 //2022年2月末日
-$d1 = new DateTime('last day of February 2022');
+$d1 = new DateTime('last day of February 2025');
 
 //現在時刻の10日前
 $d2 = new DateTime('today');
@@ -39,8 +39,7 @@ function getJpDate(?object $d): string
     $weekday = ['日', '月', '火', '水', '木', '金', '土'];
     $w = $weekday[$d->format('w')];
 
-    //文字列結合
-    $jpDate = $d->format('Y年m月d日') . '(' . $w . ')';
+    //文字列結合を返す
+    return $d->format('Y年m月d日') . '(' . $w . ')';;
 
-    return $jpDate;
 }
