@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$user = $_SESSION['userId'];
 if ($_SESSION['authenticated'] != true) { // 承認済みでなければ
     header('Location: login.php'); // ログイン画面からやり直し
     exit; // 保険として強制終了
 }
+$user = $_SESSION['userId'];
 
 ?>
 
