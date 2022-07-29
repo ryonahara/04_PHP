@@ -50,16 +50,10 @@ if (!empty($_POST)) {
 
 setcookie('lang', $lang, time() + 86400 * 30);
 
-if ($lang === 'en') {
-    $message = 'Welocome！';
-} elseif ($lang === 'ja') {
-    $message = 'ようこそ！';
-} elseif ($lang === 'kr') {
-    $message = '오신 것을 환영합니다!';
-} elseif ($lang === 'cn') {
-    $message = '欢迎光临!';
-} elseif ($lang === 'it') {
-    $message = 'Benvenuto!';
+for ($i = 0; $i < count($totalLang); $i++) {
+    if ($totalLang[$i]['nation'] == $lang) {
+        $message = $totalLang[$i]['greeting'];
+    }
 }
 
 ?>
