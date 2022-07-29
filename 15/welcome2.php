@@ -1,5 +1,7 @@
 <?php
-
+declare(strict_types=1);
+require_once dirname(__FILE__) . '/ConvertLang.php';
+$lang = 'ja';
 
 $totalLang = [
     [
@@ -37,9 +39,7 @@ $totalLang = [
         'nation'   => 'ru',
         'greeting' => 'Привет!'
     ]
-
 ];
-$lang = 'ja';
 
 if (!empty($_POST)) {
     $lang = $_POST['lang'];
@@ -50,11 +50,10 @@ if (!empty($_POST)) {
 
 setcookie('lang', $lang, time() + 86400 * 30);
 
-for ($i = 0; $i < count($totalLang); $i++) {
-    if ($totalLang[$i]['nation'] == $lang) {
-        $message = $totalLang[$i]['greeting'];
-    }
-}
+$c = new ConvertLang($lang);
+$message = $c->getConvertLang($lang);////要修正！！
+
+
 
 ?>
 
