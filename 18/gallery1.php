@@ -8,9 +8,9 @@ if (!empty($_FILES)) {
             UP_PATH . mb_convert_encoding(basename($_FILES['upfile']['name']), 'cp932', 'utf8')
         )) {
             $messageError = 'アップロードに失敗しました';
-        } elseif ($_FILES['upfile']['error'] == UPLOAD_ERR_NO_FILE) {
-            //DO NOTHING
         }
+    } elseif ($_FILES['upfile']['error'] == UPLOAD_ERR_NO_FILE) {
+        //DO NOTHING
     }
 }
 $files = glob('uploads/*.png');
@@ -84,7 +84,7 @@ $replace = ['uploads/', '.png'];
     <?php endif; ?>
     <form action="" method="post" enctype="multipart/form-data">
         <p>ファイル：<input type="file" name="upfile" accept="uploads/*">
-        <input type="submit" value="送信"></p>
+            <input type="submit" value="送信"></p>
     </form>
     <?php if (0 < count($files)) : ?>
         <table>
