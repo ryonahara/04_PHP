@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+table {
+  border-collapse: collapse;
+  width: 600px;
+  margin-bottom: 100px;
+}
+th,td {
+  border: 1px solid #666666;
+  padding: 4px;
+  text-align: center;
+}
+th {
+  background-color: #dddddd;
+}
