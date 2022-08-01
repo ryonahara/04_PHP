@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$user = '';
-$pass = '';
 
 // セッション変数を持っており、かつ承認済みであれば
 if (!empty($_SESSION) && $_SESSION['authenticated'] == true) {
@@ -10,10 +8,13 @@ if (!empty($_SESSION) && $_SESSION['authenticated'] == true) {
     exit;
 }
 
+$user = '';
+$pass = '';
+
 if (!empty($_POST)) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
-    if ($_POST['user'] === 'taro' && $_POST['pass'] === 'abcd') {
+    if ($user === 'taro' && $pass === 'abcd') {
         $_SESSION['authenticated'] = true;
         $_SESSION['userId'] = $user;
         header('Location: member.php'); // 会員ページに移動
@@ -21,6 +22,18 @@ if (!empty($_POST)) {
     } else {
         $Error = 'ユーザIDかパスワードが正しくありません';
     }
+}
+
+/**
+ * XSS対策の参照名省略
+ *
+ * @param string string
+ * @return string
+ *
+ */
+function h(?string $string): string
+{
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 ?>
 
@@ -51,7 +64,7 @@ if (!empty($_POST)) {
                     ユーザID
                 </td>
                 <td>
-                    <input type="text" name="user" value="<?= $user ?>">
+                    <input type="text" name="user" value="<?= h($user) ?>">
                 </td>
             </tr>
             <tr>
@@ -59,7 +72,7 @@ if (!empty($_POST)) {
                     パスワード
                 </td>
                 <td>
-                    <input type="text" name="pass" value="<?= $pass ?>">
+                    <input type="text" name="pass" value="<?= h($pass) ?>">
                 </td>
             </tr>
         </table>
