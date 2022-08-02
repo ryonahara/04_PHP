@@ -5,6 +5,13 @@ echo validAge('次郎', 18);
 echo validAge('三郎');
 echo validAge();
 
+/**
+ * 名前と年齢を入力し、成人判定結果を出力する。
+ *
+ * @param string|null $name
+ * @param integer|null $age
+ * @return string
+ */
 function validAge(?string $name = "名無し", ?int $age = 20): string
 {
     if ($age <= 18) {
