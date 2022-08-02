@@ -1,11 +1,11 @@
 <?php
 
-$name = '';
-$age = '';
+$name  = '';
+$age   = '';
 $email = '';
 if (!empty($_POST)) {
-    $name = $_POST['name'];
-    $age = $_POST['age'];
+    $name  = $_POST['name'];
+    $age   = $_POST['age'];
     $email = $_POST['email'];
 }
 
@@ -48,9 +48,9 @@ function h(?string $string): string
                 <th>メール</th>
             </tr>
             <tr>
-                <td><?=$name?></td>
-                <td><?=$age?></td>
-                <td><?=$email?></td>
+                <td><?=h($name)?></td>
+                <td><?=h($age)?></td>
+                <td><?=h($email)?></td>
             </tr>
         </table>
     <?php endif; ?>
