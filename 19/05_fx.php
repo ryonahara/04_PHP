@@ -15,10 +15,8 @@ echo validAge();
 function validAge(?string $name = "名無し", ?int $age = 20): string
 {
     if ($age <= 18) {
-        $msg = $name . 'さんの年齢は' . $age . '歳で未成年です。<br>';
+        return $name . 'さんの年齢は' . $age . '歳で未成年です。<br>';
     } else {
-        $msg = $name . 'さんの年齢は' . $age . '歳で成人です。<br>';
+        return $name . 'さんの年齢は' . $age . '歳で成人です。<br>';
     }
-
-    return $msg;
 }
