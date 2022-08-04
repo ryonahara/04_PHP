@@ -1,4 +1,9 @@
 <?php
+interface Engine
+{
+    public function drive();
+}
+
 class Cars implements Engine
 {
     private $maker;
@@ -10,10 +15,10 @@ class Cars implements Engine
      * @param string|null $maker
      * @param string|null $customer
      */
-    public function __construct(?string $maker = "BMW", ?string $customer = '私')
+    public function __construct(?string $m = "BMW", ?string $c = '私')
     {
-            $this->maker = $maker;
-            $this->customer = $customer;
+            $this->maker = $m;
+            $this->customer = $c;
     }
 
     /**
@@ -25,12 +30,12 @@ class Cars implements Engine
         return $this->customer . 'は' . $this->maker . 'の車に乗っています。<br>';
     }
 
+    /**
+     * 運転時のエンジン音を返す
+     *
+     * @return void
+     */
     public function drive(){
         return 'ブロロロロー<br>';
     }
-}
-
-interface Engine
-{
-    public function drive();
 }
