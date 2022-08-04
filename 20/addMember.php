@@ -2,6 +2,7 @@
 // 外部ファイルの読み込み
 declare(strict_types=1);
 require_once dirname(__FILE__) . '/db.inc.php';
+require_once dirname(__FILE__) . '/util.inc.php';
 
 // 値の初期化
 $name    = '';
@@ -19,14 +20,14 @@ if (!empty($_POST)) {
         $pdo = dbConnect();
         $stmt = $pdo->prepare(
             'INSERT INTO members (name, age, address, created_at)
-            VALUES(:name, :age, :address, :created_at)'
+            VALUES(:name, :age, :address, NOW())'
         );
 
-        $timeStamp = date("Y-m-d H:i:s");
+        // $timeStamp = date("Y-m-d H:i:s");
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->bindValue(':age', (int)$age, PDO::PARAM_INT);
         $stmt->bindValue(':address', $address, PDO::PARAM_STR);
-        $stmt->bindValue(':created_at', $timeStamp, PDO::PARAM_STR);
+        // $stmt->bindValue(':created_at', $timeStamp, PDO::PARAM_STR);
         $stmt->execute();
 
         // 一覧ページにリダイレクト
