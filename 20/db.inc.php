@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 require_once dirname(__FILE__) . '/env.php';
 
 /**
@@ -11,7 +11,6 @@ require_once dirname(__FILE__) . '/env.php';
 */
 function dbConnect(): object
 {
-  // 値を戻さないと実行先で利用できない
     return new PDO(
         'mysql:host=' . DB_HOST . '; dbname=' . DB_NAME . '; charset=utf8',
         DB_USER, DB_PASS,
@@ -21,4 +20,16 @@ function dbConnect(): object
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]
     );
+}
+
+/**
+ * XSS対策の参照名省略
+ *
+ * @param string string
+ * @return string
+ *
+ */
+function h(?string $string): string
+{
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }

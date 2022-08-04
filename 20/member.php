@@ -1,12 +1,9 @@
 <?php
-
-// require_once dirname(__FILE__) . '/env.php';
+declare(strict_types = 1);
 require_once dirname(__FILE__) . '/db.inc.php';
-
 
 try {
     $pdo = dbConnect();
-    // クエリが長い場合は句ごとに改行する
     $sql = 'SELECT * 
             FROM members';
 
@@ -53,11 +50,11 @@ try {
     <p><a href="addMember.php">会員登録をする</a></p>
     <table>
         <tr>
-            <th>ID</th>
-            <th>名前</th>
+            <th>会員ID</th>
+            <th>氏名</th>
             <th>年齢</th>
             <th>住所</th>
-            <th>日時</th>
+            <th>登録日時</th>
         </tr>
         <?php foreach ($members as $member) : ?>
             <tr>
