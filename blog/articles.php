@@ -1,25 +1,24 @@
 <?php
 declare(strict_types = 1);
-require_once dirname(__FILE__) . '/env.php';
+require_once dirname(__FILE__) . '/db.inc.php';
 
-$pdo = new PDO(
-    'mysql:host=localhost; dbname=blog; charset=utf8',
-    'sysuser',
-    'secret'
-);
+try {
+    $pdo = dbConnect();
+    $stmt = $pdo->query('
+    SELECT a.title, a.created_at, c.name, a.article
+    From categories c JOIN articles a
+    ON a.category_id = c.id
+    ORDER BY a.created_at DESC
+    ');
 
-$stmt = $pdo->query('
-  SELECT a.title, a.created_at, c.name, a.article
-  From categories c JOIN articles a
-  ON a.category_id = c.id
-  ORDER BY a.created_at DESC
-  ;
-  ');
-
-$members = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    header('Content-Type: text/plain; charset=UTF-8', true, 500);
+    exit($e->getMessage());
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -37,13 +36,13 @@ $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </header>
         <main class="main">
             <article class="article">
-            <?php foreach($members as $member): ?>
+            <?php foreach($articles as $article): ?>
                 <section class="title">
-                    <h2><?=$member['title']?></h2>
-                    <h3><?=$member['created_at']?> | <?=$member['name']?></h3>
+                    <h2><?=$article['title']?></h2>
+                    <h3><?=$article['created_at']?> | <?=$article['name']?></h3>
                 </section>
                 <div class="body">
-                <?=$member['article']?>
+                <?=$article['article']?>
                 </div>
             <?endforeach; ?>
             </article>
