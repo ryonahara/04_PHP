@@ -4,17 +4,33 @@ require_once dirname(__FILE__) . '/db.inc.php';
 
 try {
     $pdo = dbConnect();
-    $sql = '
-    SELECT a.title, a.created_at, c.name, a.article
-    From categories c JOIN articles a
-    ON a.category_id = c.id
-    ORDER BY a.created_at DESC
-    ';
-    $articles = $pdo->query($sql)->fetchAll();
+    $paramId = '';
+
+    if (!empty($_GET)) {
+        $paramId = $_GET['c'];
+
+        $sql = 'SELECT a.title, a.created_at, c.name, a.article
+                FROM categories c JOIN articles a
+                ON a.category_id = c.id
+                WHERE c.id=' . $paramId . '
+                ORDER BY a.created_at DESC';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+    } else {
+        $sql = 'SELECT a.title, a.created_at, c.name, a.article
+                FROM categories c JOIN articles a
+                ON a.category_id = c.id
+                ORDER BY a.created_at DESC';
+        $stmt = $pdo->query($sql);
+    }
+
+    $articles = $stmt->fetchAll();
 
     //全カテゴリを取得
     $sql = 'SELECT id, name FROM categories';
     $categories = $pdo->query($sql)->fetchAll();
+
+
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
     exit($e->getMessage());
@@ -47,7 +63,7 @@ try {
                 <div class="body">
                 <?=$article['article']?>
                 </div>
-            <?endforeach; ?>
+            <?php endforeach; ?>
             </article>
 
         </main>
