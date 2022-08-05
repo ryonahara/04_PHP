@@ -18,7 +18,6 @@ try {
         $title       = $_POST['title'];
         $article     = $_POST['article'];
         $isValidated = true;
-        echo 'post done';
 
         //バリデーション
         if (empty($title)) {
@@ -39,7 +38,7 @@ try {
         $sqlPre = 'INSERT INTO articles (category_id, title, article)
                     VALUES(:category_id, :title, :article)';
         $stmt = $pdo->prepare($sqlPre);
-        $stmt->bindValue(':category_id', $category_id, PDO::PARAM_STR);
+        $stmt->bindValue(':category_id', (int)$category_id, PDO::PARAM_STR);
         $stmt->bindValue(':title', $title, PDO::PARAM_INT);
         $stmt->bindValue(':article', $article, PDO::PARAM_STR);
         $stmt->execute();
