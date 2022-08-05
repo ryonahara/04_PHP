@@ -8,8 +8,7 @@ try {
 
     if (!empty($_GET)) {
         $paramId = $_GET['c'];
-
-        $sql = 'SELECT a.title, a.created_at, c.name, a.article
+        $sql = 'SELECT a.title, a.created_at, c.name, a.article, a.id
                 FROM categories c JOIN articles a
                 ON a.category_id = c.id
                 WHERE c.id=' . $paramId . '
@@ -17,7 +16,7 @@ try {
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     } else {
-        $sql = 'SELECT a.title, a.created_at, c.name, a.article
+        $sql = 'SELECT a.title, a.created_at, c.name, a.article, a.id
                 FROM categories c JOIN articles a
                 ON a.category_id = c.id
                 ORDER BY a.created_at DESC';
@@ -29,8 +28,6 @@ try {
     //全カテゴリを取得
     $sql = 'SELECT id, name FROM categories';
     $categories = $pdo->query($sql)->fetchAll();
-
-
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
     exit($e->getMessage());
@@ -58,14 +55,13 @@ try {
             <?php foreach($articles as $article): ?>
                 <section class="title">
                     <h2><?=$article['title']?></h2>
-                    <h3><?=$article['created_at']?> | <?=$article['name']?></h3>
+                    <h3><?=$article['created_at']?> | <?=$article['name']?> | <a href="delete_article.php?d=<?=$article['id']?>">削除</a></h3>
                 </section>
                 <div class="body">
                 <?=$article['article']?>
                 </div>
             <?php endforeach; ?>
             </article>
-
         </main>
         <aside class="side">
             <nav class="sidebox">

@@ -11,7 +11,6 @@ try {
     $isValidated            = false;
 
     if (!empty($_POST)) {
-
         $categoryName = $_POST['categoryName'];
         $isValidated  = true;
 
