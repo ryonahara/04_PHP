@@ -78,6 +78,7 @@ try {
                 </ul>
             </nav>
             <p class="right"><a href="post_article.php">記事の投稿</a></p>
+            <p class="right"><a href="post_category.php">カテゴリーの投稿</a></p>
         </aside>
     </div>
 </body>
