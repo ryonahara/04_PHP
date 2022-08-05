@@ -26,16 +26,10 @@ try {
 
         //DB登録
         if ($isValidated == true) {
-            $sqlPre = 'INSERT INTO categories (name)VALUES(:name)';
+            $sqlPre = 'INSERT INTO categories (name) VALUES (:name)';
             $stmt = $pdo->prepare($sqlPre);
             $stmt->bindValue(':name', $categoryName, PDO::PARAM_STR);
             $stmt->execute();
-
-            //DBから1行分取得
-            $sql = 'SELECT name FROM categories
-                    ORDER BY id DESC
-                    ';
-            $category_once = $pdo->query($sql)->fetch();
         }
     }
 
@@ -72,7 +66,7 @@ try {
                     <tr>
                         <th>カテゴリー名</th>
                         <td>
-                            <?= h($category_once['name']) ?>
+                            <?= h($categoryName) ?>
                         </td>
                     </tr>
                 </table>
