@@ -28,7 +28,8 @@ if (!empty($_POST)) {
     $error['age'] = $res['err'];
 
 
-    if (($error['name'] == null) && ($error['age'] == null) && ($age != null)) {
+    // if (($error['name'] == null) && ($error['age'] == null) && ($age != null)) {
+    if (!isset($error['name']) && empty($error['age']) && ($age != null)) {
 
         try {
             // データ登録
@@ -72,7 +73,7 @@ if (!empty($_POST)) {
     <h1>会員登録</h1>
     <p><a href="member.php">会員一覧に戻る</a></p>
 
-    <?php if (($error['name'] == null) && ($error['age'] == null) && ($age != null)) : ?>
+    <?php if (!isset($error['name']) && empty($error['age']) && ($age != null)) : ?>
         <p>登録完了しました。</p>
     <?php else : ?>
         <form action="" method="post" novalidate>
