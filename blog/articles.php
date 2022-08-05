@@ -71,6 +71,7 @@ try {
             <nav class="sidebox">
                 <h2>カテゴリ</h2>
                 <ul>
+                <li><a href="articles.php">全件表示</a></li>
                 <?php foreach($categories as $category):?>
                     <li><a href="?c=<?=$category['id']?>"><?=$category['name']?></a></li>
                 <?php endforeach;?>
