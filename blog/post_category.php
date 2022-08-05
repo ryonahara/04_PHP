@@ -32,7 +32,7 @@ try {
             $stmt->execute();
 
             //DBから1行分取得
-            $sql = 'SELECT name FROM categories c
+            $sql = 'SELECT name FROM categories
                     ORDER BY id DESC
                     ';
             $category_once = $pdo->query($sql)->fetch();
@@ -40,7 +40,7 @@ try {
     }
 
     //全カテゴリを取得
-    $sql = 'SELECT id, name FROM categories';
+    $sql = 'SELECT * FROM categories';
     $categories = $pdo->query($sql)->fetchAll();
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
