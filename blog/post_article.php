@@ -31,31 +31,29 @@ try {
             $errArr['article'] = '記事を入力してください';
             $isValidated = false;
         }
-    }
-
         //DB登録
-    if ($isValidated == true) {
-        $sqlPre = 'INSERT INTO articles (category_id, title, article)
+        if ($isValidated == true) {
+            $sqlPre = 'INSERT INTO articles (category_id, title, article)
                     VALUES(:category_id, :title, :article)';
-        $stmt = $pdo->prepare($sqlPre);
-        $stmt->bindValue(':category_id', (int)$category_id, PDO::PARAM_STR);
-        $stmt->bindValue(':title', $title, PDO::PARAM_INT);
-        $stmt->bindValue(':article', $article, PDO::PARAM_STR);
-        $stmt->execute();
+            $stmt = $pdo->prepare($sqlPre);
+            $stmt->bindValue(':category_id', (int)$category_id, PDO::PARAM_STR);
+            $stmt->bindValue(':title', $title, PDO::PARAM_INT);
+            $stmt->bindValue(':article', $article, PDO::PARAM_STR);
+            $stmt->execute();
+
+            //DBから1行分取得
+            $sql = 'SELECT c.id, a.title, a.created_at, c.name, a.article
+                    FROM categories c JOIN articles a
+                    ON a.category_id = c.id
+                    ORDER BY a.id DESC
+                    ';
+            $category_once = $pdo->query($sql)->fetch();
+        }
     }
 
     //全カテゴリを取得
     $sql = 'SELECT id, name FROM categories';
     $categories = $pdo->query($sql)->fetchAll();
-
-    //DBから1行分取得
-    $sql = 'SELECT c.id, a.title, a.created_at, c.name, a.article
-    FROM categories c JOIN articles a
-    ON a.category_id = c.id
-    ORDER BY a.id DESC
-    ';
-    $category_once = $pdo->query($sql)->fetch();
-
 } catch (PDOException $e) {
     header('Content-Type: text/plain; charset=UTF-8', true, 500);
     exit($e->getMessage());
@@ -113,7 +111,7 @@ try {
                             <td>
                                 <select name="category" value="<?= h($category_id) ?>">
                                     <?php foreach ($categories as $category) : ?>
-                                        <option value="<?= $category['id'] ?>"<?= $category['id'] == $category_id ? 'selected' : ''; ?>><?= $category['name'] ?></option>
+                                        <option value="<?= $category['id'] ?>" <?= $category['id'] == $category_id ? 'selected' : ''; ?>><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </td>
