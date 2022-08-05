@@ -41,7 +41,7 @@ class Validation
         } else {
             /* 成功時 */
             $res['age'] = $age;
-            $res['err'] = '';
+            $res['err'] = null;
         }
         return $res;
     }

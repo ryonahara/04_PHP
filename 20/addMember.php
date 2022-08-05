@@ -47,7 +47,6 @@ if (!empty($_POST)) {
             header('Content-Type: text/plain; charset=UTF-8', true, 500);
             exit($e->getMessage());
         }
-
     }
 }
 
@@ -73,9 +72,11 @@ if (!empty($_POST)) {
     <h1>会員登録</h1>
     <p><a href="member.php">会員一覧に戻る</a></p>
 
+
     <?php if (!isset($error['name']) && empty($error['age']) && ($age != null)) : ?>
         <p>登録完了しました。</p>
     <?php else : ?>
+
         <form action="" method="post" novalidate>
             <p>氏名：<input type="text" name="name" value="<?= h($name) ?>">
                 <?php if (!empty($error['name'])) : ?>
@@ -91,6 +92,7 @@ if (!empty($_POST)) {
             <p><input type="submit" value="送信"></p>
         </form>
     <?php endif; ?>
+
 </body>
 
 </html>
