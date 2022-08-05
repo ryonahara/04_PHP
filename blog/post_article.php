@@ -6,13 +6,12 @@ require_once dirname(__FILE__) . '/db.inc.php';
 try {
     $pdo = dbConnect();
 
-    $category_id = '';
-    $title       = '';
-    $article     = '';
-    $errArr['title'] = '';
+    $category_id       = '';
+    $title             = '';
+    $article           = '';
+    $errArr['title']   = '';
     $errArr['article'] = '';
-    $isValidated = false;
-
+    $isValidated       = false;
 
     if (!empty($_POST)) {
         $category_id = $_POST['category'];
@@ -37,8 +36,8 @@ try {
 
         //DB登録
     if ($isValidated == true) {
-        $sqlPre = 'INSERT INTO articles (category_id, title, article, created_at)
-                    VALUES(:category_id, :title, :article, NOW())';
+        $sqlPre = 'INSERT INTO articles (category_id, title, article)
+                    VALUES(:category_id, :title, :article)';
         $stmt = $pdo->prepare($sqlPre);
         $stmt->bindValue(':category_id', $category_id, PDO::PARAM_STR);
         $stmt->bindValue(':title', $title, PDO::PARAM_INT);
