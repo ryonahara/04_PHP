@@ -6,7 +6,7 @@ try {
     $pdo = dbConnect();
 
     $isValidated = false;
-    $deleteId    = '';
+
     if (!empty($_GET)) {
         $deleteId = $_GET['d'];
         $sql = 'SELECT a.title, c.name, a.article, a.id
@@ -69,7 +69,7 @@ try {
                     <tr>
                         <th>記事</th>
                         <td>
-                            <?= h($article['article']) ?>
+                            <?= h(nl2br($article['article'])) ?>
                         </td>
                     </tr>
                     <tr>
